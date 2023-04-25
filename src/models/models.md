@@ -1,0 +1,1 @@
+Explicar el tipo de datos con el que vamos a trabajar.
