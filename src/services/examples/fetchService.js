@@ -30,7 +30,6 @@ export const getUserDetails = async (id) => {
     return response.json()
 }
 
-
 export const login = async (email, password) => {
 
     let body = {

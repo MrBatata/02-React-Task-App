@@ -1,29 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
-import AsyncExample from './components/pure/AsyncExample';
-import ObservableExample from './components/pure/ObservableExample';
-import FetchExample from './components/pure/FetchExample';
 
 /* 
 *  *** IMPORTS EJEMPLOS Y EJERCICIOS *** 
 */
-// import Greeting from './components/pure/greeting';
-// import GreetingF from './components/pure/greetingF';
-// import Greetingstyled from './components/pure/greetingStyled';
-// import Componente1 from './hooks/1useStateEjemplo';
-// import Componente2 from './hooks/2useRefuseEffectEjemplo';
-// import ComponenteConContexto from './hooks/3useContextEjemplo';
-// import ComponenteChildren from './hooks/4props.childrenEjemplo';
-// import { Didmount } from './hooks/lifecycle/DidMount';
-// import { DidmountHook } from './hooks/lifecycle/DidMount';
-// import Allcycles from './hooks/lifecycle/AllCycles';
-// import Clock from './components/pure/clock';
-// import ClockF from './components/pure/clockF';
-// import Padre from './components/containers/padre';
-// import ContactListComponent from './components/containers/contact_list';
-// import OptionalRender from './components/pure/optionalRender';
-// import LoginFormik from './components/pure/forms/loginFormik';
-// import RegisterFormik from './components/pure/forms/registerFormik';
+// import Greeting from './components/pure/examples/greeting';
+// import GreetingF from './components/pure/examples/greetingF';
+// import Greetingstyled from './components/pure/examples/greetingStyled';
+// import Componente1 from './hooks/examples/1useStateEjemplo';
+// import Componente2 from './hooks/examples/2useRefuseEffectEjemplo';
+// import ComponenteConContexto from './hooks/examples/3useContextEjemplo';
+// import ComponenteChildren from './hooks/examples/4props.childrenEjemplo';
+// import { Didmount } from './hooks/examples/lifecycle/DidMount';
+// import { DidmountHook } from './hooks/examples/lifecycle/DidMount';
+// import Allcycles from './hooks/examples/lifecycle/AllCycles';
+// import Clock from './components/pure/examples/clock';
+// import ClockF from './components/pure/examples/clockF';
+// import Padre from './components/containers/examples/padre';
+// import ContactListComponent from './components/containers/examples/contact_list';
+// import OptionalRender from './components/pure/examples/optionalRender';
+// import LoginFormik from './components/pure/forms/examples/loginFormik';
+// import RegisterFormik from './components/pure/forms/examples/registerFormik';
+// import AsyncExample from './components/pure/examples/AsyncExample';
+// import ObservableExample from './components/pure/examples/ObservableExample';
+// import FetchExample from './components/pure/examples/FetchExample';
+// import AxiosExample from './components/pure/examples/AxiosExample';
+// import ChuckJokeAxios from './components/pure/examples/ChuckJokeAxios';
+import AxiosCRUDexample from './components/pure/examples/AxiosCRUDExample';
 
 /* 
 *  *** IMPORTS PROYECTO *** 
@@ -62,12 +64,13 @@ function App() {
       {/* <LoginFormik></LoginFormik> */}
       {/* <RegisterFormik></RegisterFormik> */}
 
-
       {/* *** EJEMPLO DE PROCESOS ASINCRONOS *** */}
       {/* <AsyncExample></AsyncExample> */}
       {/* <ObservableExample></ObservableExample> */}
-      <FetchExample></FetchExample>
-
+      {/* <FetchExample></FetchExample> */}
+      {/* <AxiosExample></AxiosExample> */}
+      {/* <ChuckJokeAxios></ChuckJokeAxios> */}
+      <AxiosCRUDexample></AxiosCRUDexample>
 
       {/* *** PROYECTO *** */}
       {/* <TaskListComponent></TaskListComponent> */}

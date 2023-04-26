@@ -1,17 +1,17 @@
 import axios from 'axios';
 
 /**
- * Login Method to ReqRes endpoint
- * @param { string } email 
- * @param { string} password 
+ *  Login Method to ReqRes endpoint
+ *  @param { string } email 
+ *  @param { string} password 
  */
-export const login = (email, password) => {
 
+
+export const login = (email, password) => {
     let body = {
         email: email,
         password: password
     }
-
     // Returns the response with a Promise
     return axios.post('https://reqres.in/api/login', body)
 
@@ -20,19 +20,22 @@ export const login = (email, password) => {
 
 // Obtain All Users
 export const getAllUsers = () => {
+    // Returns the response with a Promise
     return axios.get('https://reqres.in/api/users');
-} 
+}
 
 // Obtain All paged users
 export const getAllPagedUsers = (page) => {
+    // Returns the response with a Promise
     return axios.get(`https://reqres.in/api/users?page=${page}`);
-} 
+}
 
 
 // Obtain User by ID
 export const getUserByID = (id) => {
+    // Returns the response with a Promise
     return axios.get(`https://reqres.in/api/users/${id}`);
-} 
+}
 
 // Create User
 export const createUser = (name, job) => {
@@ -40,7 +43,6 @@ export const createUser = (name, job) => {
         name: name,
         job: job
     }
-
     // Returns the response with a Promise
     return axios.post('https://reqres.in/api/users', body)
 }
@@ -51,7 +53,6 @@ export const updateUserByID = (id, name, job) => {
         name: name,
         job: job
     }
-
     // Returns the response with a Promise
     return axios.put(`https://reqres.in/api/users/${id}`, body)
 }
@@ -59,6 +60,6 @@ export const updateUserByID = (id, name, job) => {
 // Delete User
 export const deleteUserByID = (id) => {
     return axios.delete(`https://reqres.in/api/users/${id}`);
-} 
+}
 
 
