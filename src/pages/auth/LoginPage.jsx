@@ -7,16 +7,19 @@ const LoginPage = () => {
 
     const history = useHistory();
 
-    const navigateTo = (path) => {
+    // const navigateTo = (path) => {
+    //     history.push(path)
+    // }
+
+    function navigateTo(path) {
         history.push(path)
     }
-
 
     return (
         <div>
             <h1>Login Page</h1>
             <LoginFormik></LoginFormik>
-            <Button variant="contained" onClick={navigateTo('/register')}>Registrarse</Button>
+            <Button variant="contained" onClick={()=> navigateTo('/register')}>Registrarse</Button>
         </div>
     );
 }

@@ -35,7 +35,7 @@ const TaskListComponent = () => {
         setTimeout(() => {
             setLoading(false);
         }, 2000);
-        
+
         return () => {
             console.log('Task State is going to unmount.')
         };
@@ -134,6 +134,7 @@ const TaskListComponent = () => {
             </div>
         );
     }
+    
     let taskTableShow;
     if (tasks.length > 0) {
         taskTableShow = <TaskTable></TaskTable>

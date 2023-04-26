@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 *  *** Pages imports *** 
 */
 import NotFoundPage from './pages/404/NotFoundPage';
-import DashboardPage from './pages/dashboard/DashBoard';
-import LoginPage from './pages/auth/LoginPage';
-import TaskPage from './pages/tasks/TasksPage';
 import HomePage from './pages/home/HomePage';
 import RegisterPage from './pages/auth/RegisterPage';
+import LoginPage from './pages/auth/LoginPage';
+import DashboardPage from './pages/dashboard/DashBoard';
+import TaskPage from './pages/tasks/TasksPage';
 
 
 /* 
@@ -22,6 +22,7 @@ function AppRoutingFinal() {
 
   return (
     <Router>
+
       {/* Route Switch */}
       <Switch>
 
@@ -47,14 +48,14 @@ function AppRoutingFinal() {
         </Route>
 
         {/* Register routes */}
-        {/* Need to do as below to prevent entering login from browser w/o logging out */}
-        {/* <Route exact path='/register' component={RegisterPage}>
+        {/* Need to do as below to prevent entering register from browser w/ logged in */}
+        <Route exact path='/register' component={RegisterPage}>
           {
             loggedIn ?
               <Redirect from='/' to='/dashboard'></Redirect> :
               <RegisterPage></RegisterPage>
           }
-        </Route> */}
+        </Route>
 
         {/* Dashboard routes */}
         {/* <Route exact path='/dashboard' component={DashboardPage}></Route> */}

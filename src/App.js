@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import AsyncExample from './components/pure/AsyncExample';
+import ObservableExample from './components/pure/ObservableExample';
+import FetchExample from './components/pure/FetchExample';
 
 /* 
 *  *** IMPORTS EJEMPLOS Y EJERCICIOS *** 
@@ -25,7 +28,7 @@ import './App.css';
 /* 
 *  *** IMPORTS PROYECTO *** 
 */
-import TaskListComponent from './components/containers/task_list';
+// import TaskListComponent from './components/containers/task_list';
 
 /* 
 *  *** APP - Functional component *** 
@@ -57,12 +60,17 @@ function App() {
       {/* <ContactListComponent></ContactListComponent> */}
       {/* <OptionalRender></OptionalRender> */}
       {/* <LoginFormik></LoginFormik> */}
-      <hr></hr>
       {/* <RegisterFormik></RegisterFormik> */}
-      <hr></hr>
+
+
+      {/* *** EJEMPLO DE PROCESOS ASINCRONOS *** */}
+      {/* <AsyncExample></AsyncExample> */}
+      {/* <ObservableExample></ObservableExample> */}
+      <FetchExample></FetchExample>
+
 
       {/* *** PROYECTO *** */}
-      <TaskListComponent></TaskListComponent>
+      {/* <TaskListComponent></TaskListComponent> */}
 
 
     </div>

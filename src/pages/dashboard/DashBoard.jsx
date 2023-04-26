@@ -9,8 +9,8 @@ const DashboardPage = () => {
 
     const history = useHistory();
 
-    const logout = () => {
-        history.push('/login');
+    const navigateTo = (path) => {
+        history.push(path);
     }
 
     const myList = [
@@ -23,7 +23,7 @@ const DashboardPage = () => {
         <div>
             <h1>DashBoard</h1>
             <MenuListItems list={myList} ></MenuListItems>
-            <Button variant="contained" onClick={logout}>Desconectarse</Button>
+            <Button variant="contained" onClick={() => navigateTo('/login')}>Desconectarse</Button>
             <Copyright></Copyright>
         </div>
     );
