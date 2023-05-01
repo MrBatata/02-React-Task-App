@@ -18,7 +18,7 @@ function AppRoutingFinal() {
 
   // TODO: Change to dinamic value from session storage...
   // let loggedIn = true;
-  let loggedIn = false;
+  let loggedIn = true;
 
   return (
     <Router>

@@ -8,7 +8,7 @@ import './App.css';
 // import Greetingstyled from './components/pure/examples/greetingStyled';
 // import Componente1 from './hooks/examples/1useStateEjemplo';
 // import Componente2 from './hooks/examples/2useRefuseEffectEjemplo';
-// import ComponenteConContexto from './hooks/examples/3useContextEjemplo';
+import ComponenteConContexto from './hooks/examples/3useContextEjemplo';
 // import ComponenteChildren from './hooks/examples/4props.childrenEjemplo';
 // import { Didmount } from './hooks/examples/lifecycle/DidMount';
 // import { DidmountHook } from './hooks/examples/lifecycle/DidMount';
@@ -25,7 +25,7 @@ import './App.css';
 // import FetchExample from './components/pure/examples/FetchExample';
 // import AxiosExample from './components/pure/examples/AxiosExample';
 // import ChuckJokeAxios from './components/pure/examples/ChuckJokeAxios';
-import AxiosCRUDexample from './components/pure/examples/AxiosCRUDExample';
+// import AxiosCRUDexample from './components/pure/examples/AxiosCRUDExample';
 
 /* 
 *  *** IMPORTS PROYECTO *** 
@@ -47,7 +47,7 @@ function App() {
       {/* <GreetingF name="Mr. Batata"></GreetingF> */}
       {/* <Componente1></Componente1> */}
       {/* <Componente2></Componente2> */}
-      {/* <ComponenteConContexto></ComponenteConContexto> */}
+      <ComponenteConContexto></ComponenteConContexto>
       {/* <ComponenteChildren nombre="Mr. Batata"> */}
       {/* Todo lo que está acá será tratado como props.children */}
       {/* <h3>Contenido del Children</h3> */}
@@ -70,7 +70,7 @@ function App() {
       {/* <FetchExample></FetchExample> */}
       {/* <AxiosExample></AxiosExample> */}
       {/* <ChuckJokeAxios></ChuckJokeAxios> */}
-      <AxiosCRUDexample></AxiosCRUDexample>
+      {/* <AxiosCRUDexample></AxiosCRUDexample> */}
 
       {/* *** PROYECTO *** */}
       {/* <TaskListComponent></TaskListComponent> */}

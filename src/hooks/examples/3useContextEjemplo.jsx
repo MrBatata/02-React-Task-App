@@ -1,16 +1,16 @@
 
 import React, { useContext, useState } from 'react';
 
-const miContexto = React.createContext(null);
+const miContext = React.createContext(null);
 
 const Componente4 = () => {
 
-    const estado = useContext(miContexto);
+    const state = useContext(miContext);
 
     return (
         <div>
             <h1>
-                El token es: {estado.token}
+                El token es: {state.token}
             </h1>
             <Componente5></Componente5>
         </div>
@@ -19,12 +19,12 @@ const Componente4 = () => {
 
 const Componente5 = () => {
 
-    const estado = useContext(miContexto);
+    const state = useContext(miContext);
 
     return (
         <div>
             <h2>
-                La sesión es: {estado.sesion}
+                La sesión es: {state.sesion}
             </h2>
         </div>
     );
@@ -37,28 +37,28 @@ const ComponenteConContexto = () => {
         sesion: 0
     }
 
-    const [sesionDatos, setSesionDatos] = useState(estadoInicial);
+    const [sesionData, setSesionData] = useState(estadoInicial);
 
     function actualizarSesion() {
-        setSesionDatos(
+        setSesionData(
             {
                 token: Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000,
-                sesion: sesionDatos.sesion + 1,
+                sesion: sesionData.sesion + 1,
                 estado: 'Actualizado.'
             }
         );
-        console.log(sesionDatos.estado)
+        console.log(sesionData.estado)
     }
 
     return (
         <div style={{ width: "100%" }}>
             <h1>*** Ejemplo de useContext ***</h1>
-            <miContexto.Provider value={sesionDatos}>
+            <miContext.Provider value={sesionData}>
                 {/* Todo lo que está acá adentro puede leer datos de SessionDatos.*/}
                 {/* Además, si se actualizan los componentes, acá también lo actualizan*/}
                 <Componente4></Componente4>
-                <button onClick={actualizarSesion}>Actualizar Sesión</button>
-            </miContexto.Provider>
+                <button onClick={()=>actualizarSesion()}>Actualizar Sesión</button>
+            </miContext.Provider>
             <hr></hr>
         </div>
     );
