@@ -4,13 +4,9 @@ import { useHistory } from 'react-router-dom';
 import { Home, Settings } from '@mui/icons-material';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
 /*
@@ -19,15 +15,15 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 function getIcon(icon) {
     switch (icon) {
         case 'HOME':
-            return (<Home></Home>)
+            return (<Home></Home>);
         case 'TASKS':
-            return (<AssignmentIcon></AssignmentIcon>)
+            return (<AssignmentIcon></AssignmentIcon>);
         case 'SETTINGS':
-            return (<Settings></Settings>)
+            return (<Settings></Settings>);
         default:
-            return (<Home></Home>)
+            return (<Home></Home>);
     }
-}
+};
 
 /*
 *   Main Menú - Functional component w/ MUI Materials & Icons
@@ -37,12 +33,12 @@ const MenuListItems = ({ list }) => {
     const history = useHistory();
 
     const navigateTo = (path) => {
-        history.push(path)
+        history.push(path);
     };
 
     const [selectedIndex, setSelectedIndex] = useState(1);
 
-    const handleListItemClick = (event, index) => {
+    const handleListItemClick = (index) => {
         setSelectedIndex(index);
     };
 
@@ -55,9 +51,9 @@ const MenuListItems = ({ list }) => {
                     <ListItemButton
                         key={index}
                         selected={true}
-                        onClick={(event) => {
+                        onClick={() => {
                             navigateTo(path);
-                            handleListItemClick(event, index);
+                            handleListItemClick(index);
                         }}>
 
                         <ListItemIcon>

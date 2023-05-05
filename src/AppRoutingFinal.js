@@ -1,22 +1,24 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 /* 
-*  *** Pages imports *** 
-*/
+ *  *** Pages imports *** 
+ */
 import NotFoundPage from './pages/404/NotFoundPage';
 import HomePage from './pages/home/HomePage';
 import RegisterPage from './pages/auth/RegisterPage';
 import LoginPage from './pages/auth/LoginPage';
 import DashboardPage from './pages/dashboard/DashBoard';
 import TaskPage from './pages/tasks/TasksPage';
+import SettingsPage from './pages/settings/SettingsPage';
+import ProfilePage from './pages/profile/ProfilePage';
 
 /* 
-*  *** APP - Functional component *** 
-*/
+ *  App - Functional component 
+ */
 function AppRoutingFinal() {
   // TODO: Change to dinamic value from session storage...
-  // let loggedIn = true;
   let loggedIn = true;
+  // let loggedIn = false;
 
   return (
     <Router>
@@ -54,18 +56,33 @@ function AppRoutingFinal() {
         {/* <Route exact path='/dashboard' component={DashboardPage}></Route> */}
         {/* Need to do as below to prevent entering dashboard from browser w/o logging in */}
         <Route exact path='/dashboard' component={DashboardPage}>
-          {/* {
+          {
             loggedIn ?
               <DashboardPage></DashboardPage> :
               <Redirect from='/' to='/login'></Redirect>
-          } */}
+          }
+        </Route>
+        {/* Profile routes */}
+        <Route exact path='/profile' component={ProfilePage}>
+          {
+            loggedIn ?
+              <ProfilePage></ProfilePage> :
+              <Redirect from='/' to='/login'></Redirect>
+          }
         </Route>
         {/* Task List routes */}
-        {/* TODO: just a test.... */}
         <Route exact path='/tasks' component={TaskPage}>
           {
             loggedIn ?
               <TaskPage></TaskPage> :
+              <Redirect from='/' to='/login'></Redirect>
+          }
+        </Route>
+        {/* Settings routes */}
+        <Route exact path='/settings' component={SettingsPage}>
+          {
+            loggedIn ?
+              <SettingsPage></SettingsPage> :
               <Redirect from='/' to='/login'></Redirect>
           }
         </Route>

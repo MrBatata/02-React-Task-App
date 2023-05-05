@@ -27,6 +27,6 @@ const DashboardPage = () => {
             <Copyright></Copyright>
         </div>
     );
-}
+};
 
 export default DashboardPage;

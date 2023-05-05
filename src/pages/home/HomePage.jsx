@@ -35,12 +35,8 @@ const HomePage = () => {
         <div>
             <h1>Home Page</h1>
             <div>
-                <button onClick={() => { navigateTo('/login') }}>
-                    Ingresar
-                </button>
-                <button onClick={() => { navigateProps('/online-state') }}>
-                    Ir a State
-                </button>
+                <button onClick={() => { navigateTo('/login') }}>Ingresar</button>
+                <button onClick={() => { navigateProps('/online-state') }}>Ir a State</button>
             </div>
         </div>
     );

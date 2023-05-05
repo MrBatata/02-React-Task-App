@@ -12,7 +12,7 @@ app.use(express.json());
 // Simulate client registration to the server
 // This subscription (from swRegistration.js from de cliente) should be stored in server data base
 // Here, as an example, we manually save it on a const.
-const pushSubscription = {
+const subscription = {
   endpoint: 'https://fcm.googleapis.com/fcm/send/dErRB3VsFV4:APA91bF47oPmY5nl27rGJk6gQJQooM5O-UkoK4fQhtBS14k16K8AqF7h4kxKvwZI8l3EIXV9eSeNrtGrkXwmpinDmSaQcow-grTDPmV8rp_8sDxaadHvEYSiGWa0sK3ntgBdBmpYt9ox',
   expirationTime: null,
   keys: {
@@ -43,7 +43,7 @@ app.get('/', async (req, res) => {
     message: "Soy un mensaje del más allá"
   });
   try {
-    await webpush.sendNotification(pushSubscription, payload);
+    await webpush.sendNotification(subscription, payload);
     await res.send("Enviado");
   } catch (error) { console.log(error) };
   // Push notifications from server - code end
@@ -51,8 +51,17 @@ app.get('/', async (req, res) => {
 
 app.post('/subscription', (req, res) => {
   const { pushSubscription } = req.body;
-  console.log(pushSubscription);
+  // This prints in console the client's subscription data (should be stored in server database)
+  // console.log(pushSubscription); 
   res.sendStatus(200);
+});
+
+// Received from App Notification Manager Form
+app.post('/custom-notification', (req, res) => {
+  const { title, message } = req.body;
+  const payload = JSON.stringify({ title, message });
+  webpush.sendNotification(subscription, payload);
+  res.send("Notificación personalizada enviada!");
 });
 
 // Server listen -> port
