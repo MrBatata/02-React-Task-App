@@ -88,6 +88,8 @@ self.addEventListener('activate', (event) => {
 
 // Server Notification Push
 self.addEventListener('push', (event) => {
+  // Data from and to server always in string... need to convert to `.json()` or `JSON.stringify.()`
   const { title, message } = event.data.json();
+  self.registration.showNotification('Notificación estándar', { body: 'Manden lo que manden, yo, el SW, muestro esto...' });
   self.registration.showNotification(title, { body: message });
 })

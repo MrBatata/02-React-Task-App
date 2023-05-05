@@ -62,3 +62,29 @@ endpoint: 'https://fcm.googleapis.com/fcm/send/dknPhDI6IqY:APA91bHm5JZejRFwBidlO
 const { title, message } = event.data.json();
 self.registration.showNotification(title, { body: message });
 })`
+
+9.  Include new code in server `index.js`: need to install `npm i web-push`.
+    Include import `const webpush = require("web-push");`
+    
+    `
+// Simulate client registration to the server
+// This subscription (from swRegistration.js from de cliente) should be stored in server data base
+// Here, as an example, we manually save it on a const.
+const pushSubscription = {
+  endpoint: 'https://fcm.googleapis.com/fcm/send/dErRB3VsFV4:APA91bF47oPmY5nl27rGJk6gQJQooM5O-UkoK4fQhtBS14k16K8AqF7h4kxKvwZI8l3EIXV9eSeNrtGrkXwmpinDmSaQcow-grTDPmV8rp_8sDxaadHvEYSiGWa0sK3ntgBdBmpYt9ox',
+  expirationTime: null,
+  keys: {
+    p256dh: 'BEzKpKHod5_WhpOOSrNtYgnw0uypbRekcl6Z7xPy-NzAd-nQ-SYquYaSb1ZkHzablXrY3w8aYHnRK6fVOTplwBU',
+    auth: 'k-jWWq823VC8vwad-2NBUw'
+  }
+}
+// Necessary permits to be able to push notifications to the client -> vapidKeys
+const vapidKeys = {
+  publicKey: 'BB_kgthgA79YIYKUfLgS9ugKvAi1iycUlBsV21rxRUyBl33olTGBPAZPRnlyRQ2R3XgSpN1x3fz8Cer9LJd8esU',
+  privateKey: '0cHxaqeUYCfB3OtzdXFeA_xVbPcJtcOaHUDi7jvllDI'
+}
+webpush.setVapidDetails(
+  'mailto:batata@gmail.com',
+  vapidKeys.publicKey,
+  vapidKeys.privateKey
+);`
