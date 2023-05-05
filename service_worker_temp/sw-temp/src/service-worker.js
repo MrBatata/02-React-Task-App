@@ -62,32 +62,11 @@ registerRoute(
 );
 
 // This allows the web app to trigger skipWaiting via
+// registration.waiting.postMessage({type: 'SKIP_WAITING'})
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
-    self.registration.waiting.postMessage({ type: 'SKIP_WAITING_RESULT' });
-    self.registration.showNotification("Nueva versión activada!", {
-      body: "Pruebela"
-    })
   }
 });
 
 // Any other custom service worker logic can go here.
-const version = 'v1.1.1';
-
-self.addEventListener('install', (event) => {
-  console.log(`Installing new version ${version}`);
-  self.registration.showNotification("Existe una nueva versión!", {
-    body: "Activela ahora mismo"
-  })
-});
-
-self.addEventListener('activate', (event) => {
-  console.log(`New version ${version} activated!`)
-});
-
-// Server Notification Push
-self.addEventListener('push', (event) => {
-  const { title, message } = event.data.json();
-  self.registration.showNotification(title, { body: message });
-})

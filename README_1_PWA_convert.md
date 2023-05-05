@@ -25,7 +25,7 @@
     `serviceWorkerRegistration.js`
 
 3.  Importar archivos SW en nuestro `index.js`:
-    On top: `import \* as serviceWorkerRegistration from './serviceWorkerRegistration';`
+    On top: `import * as serviceWorkerRegistration from './serviceWorkerRegistration';`
     Below root.render(...): `serviceWorkerRegistration.register();`
 
 4.  Tenemos que tener la app en producción para probarla, no se pueden en desarrollo (`npm start`)

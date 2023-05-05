@@ -9,31 +9,56 @@ En la lección 07 parte 2, montamos un servidor Express (simulado).
     `npm i cors` https://www.npmjs.com/package/cors
 
 3.  Creamos `index.js` dentro de server.
+    ` 
+const express = require("express");
+const cors = require("cors");
+// Middlewares
+const app = express();
+app.use(cors());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+// Routes
+app.get('/', (req, res) => {
+res.send('Todo Ok!')
+});
+app.post('/subscription', (req, res) => {
+const { pushSubscription } = req.body;
+console.log(pushSubscription);
+res.sendStatus(200);
+});
+// Server listen -> port
+const port = 8000;
+app.listen(port, () => console.log(`Server listening on port ${port}!`));
+`
 
-4.  Debemos configurar `swRegistration.js` para enviar registro al servidor.
-    Guardamos `registration.pushManager.subscribe(....)` en constante y luego ejecutamos un post mediante axios (podría usarse fetch pero es más simple con axios):
-    await axios.post('http://localhost:8000/subscription', {
-    pushSubscription
-    });
+4.  Debemos configurar `serviceWorkerRegistration.js` para enviar registro al servidor.
+    import
+    `import axios from "axios";`
+
+        Guardamos `registration.pushManager.subscribe(....)` en constante y luego ejecutamos un post mediante axios (podría usarse fetch pero es más simple con axios):
+        `try {
+
+    await axios.post('http://localhost:8000/subscription', { pushSubscription });
+    } catch (error) {
+    console.log(error)
+    };`
 
 5.  Debieramos poder levantar ambos servidor `node index.js` y la app `npm run server-prod`.
 
 6.  Respuesta en el servidor, simulamos guardando en una constante...
-`{
+    `    {
 pushSubscription: {
 endpoint: 'https://fcm.googleapis.com/fcm/send/dknPhDI6IqY:APA91bHm5JZejRFwBidlORWOTYmfNfrDDFobb1iQWi6d8RO4fs8Y8rRdovkyOckbNMG_OsUO9m5_HvgCL-zBySt1NFwmR-ca2S8ymse_lsO1ncEBO_9v-2AuXytoG26t_eiRilPfFEId',
-      expirationTime: null,
-      keys: {
-         p256dh: 'BDiY0QAKzA8L7dx6l_fJumlh8U7jpRKbkhLNFkS4Q_O6k83dD3DRnrO7rnTdmHpH3Lw2LTNAnZEmE3J6rbqLvyw',
-         auth: 'nh8oFhaKte2gle5SMKnTmw'
-      }
-}
-}`
+    expirationTime: null,
+    keys: {
+        p256dh: 'BDiY0QAKzA8L7dx6l_fJumlh8U7jpRKbkhLNFkS4Q_O6k83dD3DRnrO7rnTdmHpH3Lw2LTNAnZEmE3J6rbqLvyw',
+        auth: 'nh8oFhaKte2gle5SMKnTmw'
+  }}
+  }`
 
-7.  Incluimos las vapidKeys obtenidas.
-8.  Ya podemos simular el envío de notificaciones a la app (clientes), desde el servidor `index.js`.
-9.  Ahora debemos configurar el SW de nuestra app, para que cada vez que reciba del servidor un evento push, pueda accionar.
-`self.addEventListener('push', event => {
+7.  Ya podemos simular el envío de notificaciones a la app (clientes), desde el servidor `index.js`.
+8.  Ahora debemos configurar el SW de nuestra app, para que cada vez que reciba del servidor un evento push, pueda accionar.
+    `self.addEventListener('push', event => {
 const { title, message } = event.data.json();
 self.registration.showNotification(title, { body: message });
 })`

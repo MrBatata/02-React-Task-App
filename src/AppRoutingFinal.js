@@ -10,22 +10,18 @@ import LoginPage from './pages/auth/LoginPage';
 import DashboardPage from './pages/dashboard/DashBoard';
 import TaskPage from './pages/tasks/TasksPage';
 
-
 /* 
 *  *** APP - Functional component *** 
 */
 function AppRoutingFinal() {
-
   // TODO: Change to dinamic value from session storage...
   // let loggedIn = true;
   let loggedIn = true;
 
   return (
     <Router>
-
       {/* Route Switch */}
       <Switch>
-
         {/* *** Home Page *** */}
         {/* Redirections to protect routes */}
         <Route exact path='/' component={HomePage}>
@@ -35,7 +31,6 @@ function AppRoutingFinal() {
               <HomePage></HomePage>
           }
         </Route>
-
         {/* Login routes */}
         {/* <Route exact path='/login' component={LoginPage}></Route> */}
         {/* Need to do as below to prevent entering login from browser w/o logging out */}
@@ -46,7 +41,6 @@ function AppRoutingFinal() {
               <LoginPage></LoginPage>
           }
         </Route>
-
         {/* Register routes */}
         {/* Need to do as below to prevent entering register from browser w/ logged in */}
         <Route exact path='/register' component={RegisterPage}>
@@ -56,7 +50,6 @@ function AppRoutingFinal() {
               <RegisterPage></RegisterPage>
           }
         </Route>
-
         {/* Dashboard routes */}
         {/* <Route exact path='/dashboard' component={DashboardPage}></Route> */}
         {/* Need to do as below to prevent entering dashboard from browser w/o logging in */}
@@ -67,7 +60,6 @@ function AppRoutingFinal() {
               <Redirect from='/' to='/login'></Redirect>
           } */}
         </Route>
-
         {/* Task List routes */}
         {/* TODO: just a test.... */}
         <Route exact path='/tasks' component={TaskPage}>
@@ -77,13 +69,10 @@ function AppRoutingFinal() {
               <Redirect from='/' to='/login'></Redirect>
           }
         </Route>
-
         {/* *** 404 - Page Not Found *** */}
         {/* Always least inside <Switch> */}
         <Route component={NotFoundPage} />
-
       </Switch>
-
     </Router>
   );
 }
