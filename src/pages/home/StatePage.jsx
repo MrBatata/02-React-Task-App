@@ -12,12 +12,13 @@ const StatePage = () => {
         : 'Offline'
 
     const paramOnline = location.search.online
-    ? 'Online'
-    : 'Offline'
+        ? 'Online'
+        : 'Offline'
 
     return (
         <div>
             <h1> State: {stateOnline}</h1>
+            <h3> State: {paramOnline}</h3>
         </div>
     )
 }

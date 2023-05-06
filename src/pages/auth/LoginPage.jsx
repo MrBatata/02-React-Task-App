@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginFormik from '../../components/pure/forms/loginFormik'
+import LoginFormik from '../../components/pure/forms/LoginFormik'
 import { Button } from '@mui/material'
 import { useHistory } from 'react-router-dom'
 

@@ -10,7 +10,7 @@ import { blockingStyle, normalStyle, urgentStyle } from '../../../models/taskFor
 /*
 *   Creamos el componente funcional que tendrá el FORMULARIO NUEVA TAREA
 */
-const Taskform = ({ add, nTasks }) => {
+const TaskForm = ({ add, nTasks }) => {
     /*
     *   useRef para guardar los datos de los input a variables para crear la NUEVA TAREA
     */
@@ -91,9 +91,9 @@ const Taskform = ({ add, nTasks }) => {
     )
 }
 
-Taskform.protoTypes = {
+TaskForm.protoTypes = {
     add: PropTypes.func.isRequired
     // length: PropTypes.number.isRequired
 }
 
-export default Taskform
+export default TaskForm

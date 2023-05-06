@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const NotFoundPage = () => {
     const history = useHistory()
@@ -8,9 +8,9 @@ const NotFoundPage = () => {
         history.push(path)
     }
 
-    const goBack = () => {
-        history.goBack()
-    }
+    // const goBack = () => {
+    //     history.goBack()
+    // }
 
     return (
         <div>

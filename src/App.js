@@ -20,7 +20,7 @@ import ProfilePage from './pages/profile/ProfilePage'
 function App() {
   // TODO: Change to dinamic value from session storage...
   const loggedIn = true
-  // let loggedIn = false;
+  // const loggedIn = false
 
   return (
     <Router>

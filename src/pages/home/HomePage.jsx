@@ -21,13 +21,13 @@ const HomePage = () => {
         })
     }
 
-    const goBack = () => {
-        history.goBack()
-    }
+    // const goBack = () => {
+    //     history.goBack()
+    // }
 
-    const goForward = () => {
-        history.goForward()
-    }
+    // const goForward = () => {
+    //     history.goForward()
+    // }
 
     return (
         <div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import NotificationManager from '../../components/pure/forms/NotificationManager.jsx'
+import Settings from '../../components/settings/Settings.jsx'
 
 const ProfilePage = ({ user }) => {
   const location = useLocation()
@@ -12,12 +13,13 @@ const ProfilePage = ({ user }) => {
     history.push(path)
   }
 
-  const goBack = () => {
-    history.goBack()
-  }
+  // const goBack = () => {
+  //   history.goBack()
+  // }
 
   return (
     <div>
+      <Settings></Settings>
       <h1>Tu Perfil</h1>
       <NotificationManager></NotificationManager>
       <div>

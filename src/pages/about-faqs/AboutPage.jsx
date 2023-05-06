@@ -14,9 +14,9 @@ const AboutPage = () => {
         history.goBack()
     }
 
-    const goForward = () => {
-        history.goForward()
-    }
+    // const goForward = () => {
+    //     history.goForward()
+    // }
 
     return (
         <div>

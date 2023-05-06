@@ -47,7 +47,7 @@ const LoginFormik = () => {
                 validationSchema={loginSchema}
                 // **** onSubmit
                 onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 1000))
+                    await new Promise((resolve) => setTimeout(resolve, 1000))
                     alert(JSON.stringify(values, null, 2))
                     // Data storage in localStorage
                     await localStorage.setItem('credentials', values)
@@ -56,13 +56,13 @@ const LoginFormik = () => {
             >
                 {/* We obtain props from Formik */}
                 {({
- values,
+                    values,
                     touched,
                     errors,
                     isSubmitting,
                     handleChange,
                     handleBlur
-}) => (
+                }) => (
                     <Form>
                         <label htmlFor="email">Email</label>
                         {/* Email Errors */}
@@ -92,7 +92,6 @@ const LoginFormik = () => {
                         {isSubmitting ? (<p>Validando credenciales...</p>) : null}
                     </Form>
                 )}
-
             </Formik>
         </div>
     )

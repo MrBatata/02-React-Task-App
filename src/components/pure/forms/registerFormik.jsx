@@ -2,31 +2,21 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
-/*
-*   Models Imports
-*/
+/**
+ * * Models
+ */
 import { ROLES } from '../../../models/roles.enum'
 import { User } from '../../../models/user.class'
 
-/*
-*   Register Form - functional component w/ Formik & Yup
-*/
-const Registerformik = () => {
-    const user = new User()
+/**
+ * * Register Form - functional component w/ Formik & Yup
+ */
+const RegisterFormik = () => {
+    const initialValues = new User('', '', '', '')
 
-    const initialValues = {
-        username: '',
-        email: '',
-        password: '',
-        confirm: '', // to confirm password
-        role: ROLES.USER
-    }
-
-    /*
-    *   Data validation - Yup Schema
-    */
-    const registerSchema = Yup.object().shape(
-        {
+    // Data validation - Yup Schema
+    const registerSchema = Yup.object()
+        .shape({
             username: Yup.string()
                 .min(6, 'Username too short')
                 .max(12, 'Username too long')
@@ -53,99 +43,90 @@ const Registerformik = () => {
                     'You must select a Role: User / Admin'
                 )
                 .required('Role is required')
-        }
-    )
-
-    const submit = (values) => {
-        alert('Register user')
-    }
+        })
 
     return (
         <div>
-            <h4>Register Formik</h4>
+            <h4>Completar el formulario</h4>
 
             <Formik
-                // **** Initial values
+                // Initial values
                 initialValues={initialValues}
-                // *** Yup Validation Schema ***
+                // Yup Validation Schema
                 validationSchema={registerSchema}
-                // ** onSubmit Event
+                // onSubmit Event
                 onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 1000))
+                    // Simulates a delay time response
+                    await new Promise((resolve) => setTimeout(resolve, 1000))
                     alert(JSON.stringify(values, null, 2))
                 }}
             >
-                {/* We obtain props from Formik */}
-                {({
- values,
-                    touched,
-                    errors,
-                    isSubmitting,
-                    handleChange,
-                    handleBlur
-}) => (
-                    <Form>
-                        {/* *** User Name Input *** */}
-                        {/* username Errors */}
-                        {
-                            errors.username && touched.username &&
-                            (
-                                <ErrorMessage name="username" component='div'></ErrorMessage>
-                            )
-                        }
-                        <Field id="username" type="text" name="username" placeholder="Ingrese nombre de usuario" />
-                        <br></br>
+                {/* Formik props */}
+                {
+                    ({
+                        values,
+                        touched,
+                        errors,
+                        isSubmitting,
+                        handleChange,
+                        handleBlur
+                    }
+                    ) => (
+                        <Form>
+                            {/* *** User Name Input *** */}
+                            <Field id="username" type="text" name="username" placeholder="Ingrese nombre de usuario" />
+                            {/* username Errors */}
+                            {
+                                errors.username && touched.username &&
+                                (
+                                    <ErrorMessage name="username" component='div'></ErrorMessage>
+                                )
+                            }
+                            <br></br>
 
-                        {/* *** Email Input *** */}
-                        {/* Email Errors */}
-                        {
-                            errors.email && touched.email &&
-                            (
-                                <ErrorMessage name="email" component='div'></ErrorMessage>
-                            )
-                        }
-                        <Field id="email" type="email" name="email" placeholder="ejemplo@correo.com" />
-                        <br></br>
+                            {/* *** Email Input *** */}
+                            <Field id="email" type="email" name="email" placeholder="ejemplo@correo.com" />
+                            {/* Email Errors */}
+                            {
+                                errors.email && touched.email &&
+                                (
+                                    <ErrorMessage name="email" component='div'></ErrorMessage>
+                                )
+                            }
+                            <br></br>
 
-                        {/* *** Password Input *** */}
-                        {/* Password Errors */}
-                        {
-                            errors.password && touched.password &&
-                            (
-                                <ErrorMessage name="password" component='div'></ErrorMessage>
-                            )
-                        }
-                        <Field id="password" name="password" placeholder="Ingrese contraseña" type='password' />
-                        <br></br>
+                            {/* *** Password Input *** */}
+                            <Field id="password" name="password" placeholder="Ingrese contraseña" type='password' />
+                            {/* Password Errors */}
+                            {
+                                errors.password && touched.password &&
+                                (
+                                    <ErrorMessage name="password" component='div'></ErrorMessage>
+                                )
+                            }
+                            <br></br>
 
-                        {/* *** Confirmation Input *** */}
-                        {/* Confirm Errors */}
-                        {
-                            errors.confirm && touched.confirm &&
-                            (
-                                <ErrorMessage name="confirm" component='div'></ErrorMessage>
-                            )
-                        }
-                        <Field id="confirm" name="confirm" placeholder="Confirmar contraseña" type='password' />
-                        <br></br>
+                            {/* *** Confirmation Input *** */}
+                            <Field id="confirm" name="confirm" placeholder="Confirmar contraseña" type='password' />
+                            {/* Confirm Errors */}
+                            {
+                                errors.confirm && touched.confirm &&
+                                (
+                                    <ErrorMessage name="confirm" component='div'></ErrorMessage>
+                                )
+                            }
+                            <br></br>
 
-                        {/* *** Role Input *** */}
-                        {/* TODO: for now, not optional to choose between user/admin in register */}
-                        {/* <Field id="role" name="role" placeholder="Seleccione rol"  as="select">
-                            <option value="user">User</option>
-                            <option value="admin">Admin</option>
-                        </Field> */}
+                            {/* Submit button */}
+                            <button type="submit">Registrarse</button>
+                            {isSubmitting ? (<p>Registrando usuario...</p>) : null}
+                        </Form>
+                    )
 
-                        {/* Submit button */}
-                        <button type="submit">Registrarse</button>
-                        {isSubmitting ? (<p>Registrando usuario...</p>) : null}
-
-                    </Form>
-                )
                 }
             </Formik>
         </div>
     )
 }
 
-export default Registerformik
+export default RegisterFormik

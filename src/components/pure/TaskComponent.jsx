@@ -1,33 +1,38 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-/*
-*   Models Imports
-*/
+import { useTaskDispatchContext } from '../../pages/tasks/TasksPage'
+import { completeSelTask, removeSelTask } from '../../store/actions/actions'
+
+/**
+ * * Models
+ */
 import { Task, taskCompletedFormat, taskPendingFormat } from '../../models/task.class'
 import { LEVELS } from '../../models/levels.enum'
-/*
-*   CSS / SCSS Imports
-*/
-import '../../styles/task.scss'
 
-/*
-*   Task - functional component
-*/
-const TaskComponent = ({ task, complete, remove }) => {
-    /*
-    *   HOOK function for Lifecylcle control
-    */
+/**
+ * * Styles
+ */
+import '../../styles/task.css'
+
+/**
+ * * Task
+ */
+const TaskComponent = ({ task }) => {
+    const taskDispatchState = useTaskDispatchContext()
+
+    /**
+     * * HOOK function for Lifecylcle control
+     */
     useEffect(() => {
-        console.log('Created Task.')
         return () => {
-            console.log(`Task: ${task.name} is going to unmount`)
+            // console.log(`taskComponent: Created Task ${task.id}.`)
         }
     }, [task])
 
-    /*
-    *   Function that returns Badge depending on the level of the task
-    */
-    function taskLevelBadge () {
+    /**
+     * * Badge depending on the level of the task
+     */
+    function taskLevelBadge() {
         switch (task.level) {
             case LEVELS.NORMAL:
                 return (
@@ -55,16 +60,16 @@ const TaskComponent = ({ task, complete, remove }) => {
         }
     }
 
-    /*
-    *   Function that returns Icon depending on completion of the task
-    */
-    function taskIsCompletedIcon () {
+    /**
+     * * Icon depending on completion of the task
+     */
+    function taskIsCompletedIcon() {
         if (task.isCompleted) {
             return (
                 <i
                     className='bi bi-toggle-on font-weight-bold task-action'
                     style={{ color: 'green' }}
-                    onClick={() => (complete(task))}
+                    onClick={() => taskDispatchState(completeSelTask(task))}
                 >
                 </i>
             )
@@ -73,16 +78,16 @@ const TaskComponent = ({ task, complete, remove }) => {
                 <i
                     className='bi bi-toggle-off font-weight-bold task-action'
                     style={{ color: 'tomato' }}
-                    onClick={() => (complete(task))}
+                    onClick={() => taskDispatchState(completeSelTask(task))}
                 >
                 </i>
             )
         }
     }
 
-    /*
-    *   Function to apply style depending on completion of the task
-    */
+    /**
+     * * Style depending on completion of the task
+     */
     let completedFormat
     if (task.isCompleted) {
         completedFormat = taskCompletedFormat
@@ -90,9 +95,9 @@ const TaskComponent = ({ task, complete, remove }) => {
         completedFormat = taskPendingFormat
     }
 
-    /*
-    * Elemento HTML que imprime el componente funcional al DOM
-    */
+    /**
+     * * DOM
+     */
     return (
         <tr className='fw-normal'>
 
@@ -116,7 +121,7 @@ const TaskComponent = ({ task, complete, remove }) => {
             <td className='align-middle'>
                 <i
                     className='bi bi-trash task-action'
-                    onClick={() => (remove(task))}
+                    onClick={() => taskDispatchState(removeSelTask(task))}
                 ></i>
             </td>
 

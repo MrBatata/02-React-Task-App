@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+// import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import { Home, Settings } from '@mui/icons-material'
@@ -35,11 +36,11 @@ const MenuListItems = ({ list }) => {
         history.push(path)
     }
 
-    const [selectedIndex, setSelectedIndex] = useState(1)
+    // const [selectedIndex, setSelectedIndex] = useState(1)
 
-    const handleListItemClick = (index) => {
-        setSelectedIndex(index)
-    }
+    // const handleListItemClick = (index) => {
+    //     setSelectedIndex(index)
+    // }
 
     return (
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -51,7 +52,7 @@ const MenuListItems = ({ list }) => {
                         selected={true}
                         onClick={() => {
                             navigateTo(path)
-                            handleListItemClick(index)
+                            // handleListItemClick(index)
                         }}>
 
                         <ListItemIcon>
