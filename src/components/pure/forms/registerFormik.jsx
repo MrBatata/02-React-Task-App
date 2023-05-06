@@ -1,19 +1,18 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import React from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
 
 /*
 *   Models Imports
 */
-import { ROLES } from '../../../models/roles.enum';
-import { User } from '../../../models/user.class';
+import { ROLES } from '../../../models/roles.enum'
+import { User } from '../../../models/user.class'
 
 /*
 *   Register Form - functional component w/ Formik & Yup
 */
 const Registerformik = () => {
-
-    let user = new User();
+    const user = new User()
 
     const initialValues = {
         username: '',
@@ -39,11 +38,11 @@ const Registerformik = () => {
                 .min(8, 'Password too short')
                 .required('Password is required'),
             confirm: Yup.string()
-                .when("password", {
-                    is: pass => (pass && pass.length > 0 ? true : false),
+                .when('password', {
+                    is: pass => (!!(pass && pass.length > 0)),
                     then: Yup.string()
                         .oneOf(
-                            [Yup.ref("password")],
+                            [Yup.ref('password')],
                             '¡Passwords must match!'
                         )
                 })
@@ -53,7 +52,7 @@ const Registerformik = () => {
                     [ROLES.USER, ROLES.ADMIN],
                     'You must select a Role: User / Admin'
                 )
-                .required('Role is required'),
+                .required('Role is required')
         }
     )
 
@@ -72,17 +71,19 @@ const Registerformik = () => {
                 validationSchema={registerSchema}
                 // ** onSubmit Event
                 onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 1000));
+                    await new Promise((r) => setTimeout(r, 1000))
                     alert(JSON.stringify(values, null, 2))
                 }}
             >
                 {/* We obtain props from Formik */}
-                {({ values,
+                {({
+ values,
                     touched,
                     errors,
                     isSubmitting,
                     handleChange,
-                    handleBlur }) => (
+                    handleBlur
+}) => (
                     <Form>
                         {/* *** User Name Input *** */}
                         {/* username Errors */}
@@ -144,8 +145,7 @@ const Registerformik = () => {
                 }
             </Formik>
         </div>
-    );
-
+    )
 }
 
-export default Registerformik;
+export default Registerformik

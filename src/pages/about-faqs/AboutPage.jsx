@@ -1,23 +1,21 @@
-import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-
+import React from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 
 const AboutPage = () => {
-
-    const location = useLocation();
-    console.log(`We are in Route ${location.pathname}`);
-    const history = useHistory();
+    const location = useLocation()
+    console.log(`We are in Route ${location.pathname}`)
+    const history = useHistory()
 
     const navigate = (path) => {
-        history.push(path);
+        history.push(path)
     }
 
     const goBack = () => {
-        history.goBack();
+        history.goBack()
     }
 
     const goForward = () => {
-        history.goForward();
+        history.goForward()
     }
 
     return (
@@ -31,7 +29,7 @@ const AboutPage = () => {
             </div>
         </div>
 
-    );
+    )
 }
 
-export default AboutPage;
+export default AboutPage

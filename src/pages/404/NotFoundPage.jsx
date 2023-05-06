@@ -1,17 +1,15 @@
-import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-
+import React from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 
 const NotFoundPage = () => {
-
-    const history = useHistory();
+    const history = useHistory()
 
     const navigateTo = (path) => {
-        history.push(path);
+        history.push(path)
     }
 
     const goBack = () => {
-        history.goBack();
+        history.goBack()
     }
 
     return (
@@ -19,7 +17,7 @@ const NotFoundPage = () => {
             <h1>404 - Page Not Found</h1>
             <button onClick={() => navigateTo('/')}>Página principal</button>
         </div>
-    );
+    )
 }
 
-export default NotFoundPage;
+export default NotFoundPage

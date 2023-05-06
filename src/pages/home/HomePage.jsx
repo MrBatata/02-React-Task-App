@@ -1,22 +1,20 @@
-import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-
+import React from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 
 const HomePage = () => {
+    const location = useLocation()
+    console.log(`We are in Route ${location.pathname}`)
 
-    const location = useLocation();
-    console.log(`We are in Route ${location.pathname}`);
-    
-    const history = useHistory();
+    const history = useHistory()
 
     const navigateTo = (path) => {
-        history.push(path);
+        history.push(path)
     }
 
     const navigateProps = (path) => {
         history.push({
             pathname: path,
-            search: '?online=true', // Query Params 
+            search: '?online=true', // Query Params
             state: {
                 online: true
             }
@@ -24,11 +22,11 @@ const HomePage = () => {
     }
 
     const goBack = () => {
-        history.goBack();
+        history.goBack()
     }
 
     const goForward = () => {
-        history.goForward();
+        history.goForward()
     }
 
     return (
@@ -39,7 +37,7 @@ const HomePage = () => {
                 <button onClick={() => { navigateProps('/online-state') }}>Ir a State</button>
             </div>
         </div>
-    );
+    )
 }
 
-export default HomePage;
+export default HomePage

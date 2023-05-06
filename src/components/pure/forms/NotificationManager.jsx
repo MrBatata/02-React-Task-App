@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react'
+import axios from 'axios'
 
-function NotificationManager() {
-  const [title, settitle] = useState('');
-  const [message, setmessage] = useState('');
+function NotificationManager () {
+  const [title, settitle] = useState('')
+  const [message, setmessage] = useState('')
 
   const handleTitle = (e) => {
     settitle(e.target.value)
-  };
+  }
 
   const handleMessage = (e) => {
     setmessage(e.target.value)
-  };
+  }
 
   const sendNotification = () => {
     return axios.post('http://localhost:8000/custom-notification', {
@@ -21,7 +21,7 @@ function NotificationManager() {
       .then(resp => console.log(resp))
       .catch(err => console.log(err))
       .finally(console.log('Tried notification...'))
-  };
+  }
 
   return (
     <div>
@@ -42,7 +42,7 @@ function NotificationManager() {
         </textarea>
         <button
           onClick={sendNotification}
-          class="btn btn-primary m-3"
+          className="btn btn-primary m-3"
         >
           Enviar mensaje
         </button>
@@ -51,4 +51,4 @@ function NotificationManager() {
   )
 };
 
-export default NotificationManager;
+export default NotificationManager

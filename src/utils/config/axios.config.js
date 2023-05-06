@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 // Default config for AXIOS
 export const RandomUserAPIRequest = axios.create(
@@ -7,7 +7,7 @@ export const RandomUserAPIRequest = axios.create(
         responseType: 'json',
         timeout: 6000
     }
-);
+)
 
 export const ChuckJokeAPIRequest = axios.create(
     {
@@ -15,5 +15,4 @@ export const ChuckJokeAPIRequest = axios.create(
         responseType: 'json',
         timeout: 6000
     }
-);
-
+)

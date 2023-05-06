@@ -1,7 +1,7 @@
-import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import React from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
+import { Formik, Field, Form, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
 
 /*
 *   Data validation - Yup Schema
@@ -23,15 +23,14 @@ const loginSchema = (Yup
 *   Register Form - functional component w/ Formik & Yup
 */
 const LoginFormik = () => {
-
     /* Navigation functions */
-    const location = useLocation();
-    console.log(`We are in Route ${location.pathname}`);
-    const history = useHistory();
+    const location = useLocation()
+    console.log(`We are in Route ${location.pathname}`)
+    const history = useHistory()
     const navigateTo = (path) => {
-        history.push(path);
+        history.push(path)
     }
-    
+
     /* Login */
     const initialCredentials = {
         email: '',
@@ -48,20 +47,22 @@ const LoginFormik = () => {
                 validationSchema={loginSchema}
                 // **** onSubmit
                 onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 1000));
-                    alert(JSON.stringify(values, null, 2));
+                    await new Promise((r) => setTimeout(r, 1000))
+                    alert(JSON.stringify(values, null, 2))
                     // Data storage in localStorage
-                    await localStorage.setItem('credentials', values);
-                    navigateTo('/');
+                    await localStorage.setItem('credentials', values)
+                    navigateTo('/')
                 }}
             >
                 {/* We obtain props from Formik */}
-                {({ values,
+                {({
+ values,
                     touched,
                     errors,
                     isSubmitting,
                     handleChange,
-                    handleBlur }) => (
+                    handleBlur
+}) => (
                     <Form>
                         <label htmlFor="email">Email</label>
                         {/* Email Errors */}
@@ -72,7 +73,6 @@ const LoginFormik = () => {
                             )
                         }
                         <Field id="email" type="email" name="email" placeholder="example@email.com" />
-
 
                         <label htmlFor="password">Password</label>
                         {/* Password Errors */}
@@ -96,6 +96,6 @@ const LoginFormik = () => {
             </Formik>
         </div>
     )
-};
+}
 
-export default LoginFormik;
+export default LoginFormik

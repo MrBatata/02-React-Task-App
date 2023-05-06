@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 /*
 *   Models Imports
 */
-import { Task, taskCompletedFormat, taskPendingFormat } from '../../models/task.class';
-import { LEVELS } from '../../models/levels.enum';
+import { Task, taskCompletedFormat, taskPendingFormat } from '../../models/task.class'
+import { LEVELS } from '../../models/levels.enum'
 /*
 *   CSS / SCSS Imports
 */
@@ -14,20 +14,20 @@ import '../../styles/task.scss'
 *   Task - functional component
 */
 const TaskComponent = ({ task, complete, remove }) => {
-    /* 
-    *   HOOK function for Lifecylcle control  
+    /*
+    *   HOOK function for Lifecylcle control
     */
     useEffect(() => {
         console.log('Created Task.')
         return () => {
             console.log(`Task: ${task.name} is going to unmount`)
-        };
-    }, [task]);
+        }
+    }, [task])
 
     /*
     *   Function that returns Badge depending on the level of the task
     */
-    function taskLevelBadge() {
+    function taskLevelBadge () {
         switch (task.level) {
             case LEVELS.NORMAL:
                 return (
@@ -51,14 +51,14 @@ const TaskComponent = ({ task, complete, remove }) => {
                         </span>
                     </h4>)
             default:
-                break;
+                break
         }
     }
 
     /*
     *   Function that returns Icon depending on completion of the task
     */
-    function taskIsCompletedIcon() {
+    function taskIsCompletedIcon () {
         if (task.isCompleted) {
             return (
                 <i
@@ -83,15 +83,15 @@ const TaskComponent = ({ task, complete, remove }) => {
     /*
     *   Function to apply style depending on completion of the task
     */
-    let completedFormat;
+    let completedFormat
     if (task.isCompleted) {
         completedFormat = taskCompletedFormat
     } else {
         completedFormat = taskPendingFormat
     }
 
-    /* 
-    * Elemento HTML que imprime el componente funcional al DOM 
+    /*
+    * Elemento HTML que imprime el componente funcional al DOM
     */
     return (
         <tr className='fw-normal'>
@@ -122,9 +122,8 @@ const TaskComponent = ({ task, complete, remove }) => {
 
         </tr>
 
-    );
-};
-
+    )
+}
 
 TaskComponent.propTypes = {
 
@@ -137,9 +136,6 @@ TaskComponent.propTypes = {
     /* Defino que deleteT debe ser una FUNCION, y que debe ser obligatoria */
     remove: PropTypes.func.isRequired
 
-};
+}
 
-
-export default TaskComponent;
-
-
+export default TaskComponent

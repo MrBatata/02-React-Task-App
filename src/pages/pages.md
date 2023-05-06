@@ -1,1 +1,0 @@
-En esta carpeta se van a crear todas las páginas que queremos mostrar en nuestra app.

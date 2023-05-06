@@ -1,40 +1,40 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { useRef } from 'react'
+import PropTypes from 'prop-types'
 /*
 *   Models Imports
 */
-import { LEVELS } from '../../../models/levels.enum';
-import { Task } from '../../../models/task.class';
-import { blockingStyle, normalStyle, urgentStyle } from '../../../models/taskForm.class';
+import { LEVELS } from '../../../models/levels.enum'
+import { Task } from '../../../models/task.class'
+import { blockingStyle, normalStyle, urgentStyle } from '../../../models/taskForm.class'
 
 /*
 *   Creamos el componente funcional que tendrá el FORMULARIO NUEVA TAREA
 */
 const Taskform = ({ add, nTasks }) => {
     /*
-    *   useRef para guardar los datos de los input a variables para crear la NUEVA TAREA  
+    *   useRef para guardar los datos de los input a variables para crear la NUEVA TAREA
     */
-    const nameRef = useRef('');
-    const descriptionRef = useRef('');
-    const levelRef = useRef(LEVELS.NORMAL);
+    const nameRef = useRef('')
+    const descriptionRef = useRef('')
+    const levelRef = useRef(LEVELS.NORMAL)
 
     /*
     *   onSubmit acciona la función addTask que ingresa aquí.
     *   addTask genera la NUEVA TAREA, en la constante taskInput.
     *   taskInput es ingresada a la prop "add" que es una función.
-    * 
+    *
     *   La prop "add" será definida en el componente padre task_list,
     *   dentro de la etiquieta del formulario en el HTML.
     */
-    function addTask(e) {
-        e.preventDefault();
+    function addTask (e) {
+        e.preventDefault()
         const taskInput = new Task(
             nameRef.current.value,
             descriptionRef.current.value,
             false,
             levelRef.current.value
-        );
-        add(taskInput);
+        )
+        add(taskInput)
     }
 
     return (
@@ -88,12 +88,12 @@ const Taskform = ({ add, nTasks }) => {
 
             </div>
         </form>
-    );
-};
+    )
+}
 
 Taskform.protoTypes = {
-    add: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired
     // length: PropTypes.number.isRequired
-};
+}
 
-export default Taskform;
+export default Taskform

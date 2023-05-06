@@ -1,9 +1,8 @@
-import React from 'react';
+import React from 'react'
 import { useParams } from 'react-router-dom'
 
-const TasksDetailPage = ({task}) => {
-
-    const { id } = useParams();
+const TasksDetailPage = ({ task }) => {
+    const { id } = useParams()
 
     return (
         <div>
@@ -11,7 +10,7 @@ const TasksDetailPage = ({task}) => {
             <h2>{task.name}</h2>
             <h2>{task.description}</h2>
         </div>
-    );
+    )
 }
 
-export default TasksDetailPage;
+export default TasksDetailPage
