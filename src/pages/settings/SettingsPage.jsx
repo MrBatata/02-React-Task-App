@@ -1,17 +1,17 @@
-import React from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
-import NotificationManager from '../../components/pure/forms/NotificationManager.jsx'
-import Settings from '../../components/settings/Settings.jsx'
+import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import NotificationManager from '../../components/pure/forms/NotificationManager.jsx';
+import Settings from '../../components/settings/Settings.jsx';
 
-const ProfilePage = ({ user }) => {
-  const location = useLocation()
-  console.log(`We are in Route ${location.pathname}`)
+function ProfilePage({ user }) {
+  const location = useLocation();
+  console.log(`We are in Route ${location.pathname}`);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const navigateTo = (path) => {
-    history.push(path)
-  }
+    history.push(path);
+  };
 
   // const goBack = () => {
   //   history.goBack()
@@ -19,14 +19,14 @@ const ProfilePage = ({ user }) => {
 
   return (
     <div>
-      <Settings></Settings>
+      <Settings />
       <h1>Tu Perfil</h1>
-      <NotificationManager></NotificationManager>
+      <NotificationManager />
       <div>
-        <button onClick={() => { navigateTo('/dashboard') }}>Volver a DashBoard</button>
+        <button onClick={() => { navigateTo('/dashboard'); }}>Volver a DashBoard</button>
       </div>
     </div>
-  )
+  );
 }
 
-export default ProfilePage
+export default ProfilePage;

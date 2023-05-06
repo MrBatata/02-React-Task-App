@@ -1,18 +1,16 @@
-import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
-
-/**
- * * Models
- */
-import { ROLES } from '../../../models/roles.enum'
-import { User } from '../../../models/user.class'
+import React from 'react';
+import {
+ Formik, Form, Field, ErrorMessage,
+} from 'formik';
+import * as Yup from 'yup';
+import { ROLES } from '../../../models/roles.enum';
+import { User } from '../../../models/user.class';
 
 /**
  * * Register Form - functional component w/ Formik & Yup
  */
-const RegisterFormik = () => {
-    const initialValues = new User('', '', '', '')
+function RegisterFormik() {
+    const initialValues = new User('', '', '', '');
 
     // Data validation - Yup Schema
     const registerSchema = Yup.object()
@@ -29,104 +27,103 @@ const RegisterFormik = () => {
                 .required('Password is required'),
             confirm: Yup.string()
                 .when('password', {
-                    is: pass => (!!(pass && pass.length > 0)),
+                    is: (pass) => (!!(pass && pass.length > 0)),
                     then: Yup.string()
                         .oneOf(
                             [Yup.ref('password')],
-                            '¡Passwords must match!'
-                        )
+                            '¡Passwords must match!',
+                        ),
                 })
                 .required('You must confirm the password'),
             role: Yup.string()
                 .oneOf(
                     [ROLES.USER, ROLES.ADMIN],
-                    'You must select a Role: User / Admin'
+                    'You must select a Role: User / Admin',
                 )
-                .required('Role is required')
-        })
+                .required('Role is required'),
+        });
 
     return (
-        <div>
-            <h4>Completar el formulario</h4>
+      <div>
+        <h4>Completar el formulario</h4>
 
-            <Formik
+        <Formik
                 // Initial values
-                initialValues={initialValues}
+          initialValues={initialValues}
                 // Yup Validation Schema
-                validationSchema={registerSchema}
+          validationSchema={registerSchema}
                 // onSubmit Event
-                onSubmit={async (values) => {
+          onSubmit={async (values) => {
                     // Simulates a delay time response
-                    await new Promise((resolve) => setTimeout(resolve, 1000))
-                    alert(JSON.stringify(values, null, 2))
+                    await new Promise((resolve) => setTimeout(resolve, 1000));
+                    alert(JSON.stringify(values, null, 2));
                 }}
-            >
-                {/* Formik props */}
-                {
+        >
+          {/* Formik props */}
+          {
                     ({
                         values,
                         touched,
                         errors,
                         isSubmitting,
                         handleChange,
-                        handleBlur
-                    }
-                    ) => (
-                        <Form>
-                            {/* *** User Name Input *** */}
-                            <Field id="username" type="text" name="username" placeholder="Ingrese nombre de usuario" />
-                            {/* username Errors */}
-                            {
-                                errors.username && touched.username &&
-                                (
-                                    <ErrorMessage name="username" component='div'></ErrorMessage>
+                        handleBlur,
+                    }) => (
+                      <Form>
+                        {/* *** User Name Input *** */}
+                        <Field id="username" type="text" name="username" placeholder="Ingrese nombre de usuario" />
+                        {/* username Errors */}
+                        {
+                                errors.username && touched.username
+                                && (
+                                <ErrorMessage name="username" component="div" />
                                 )
                             }
-                            <br></br>
+                        <br />
 
-                            {/* *** Email Input *** */}
-                            <Field id="email" type="email" name="email" placeholder="ejemplo@correo.com" />
-                            {/* Email Errors */}
-                            {
-                                errors.email && touched.email &&
-                                (
-                                    <ErrorMessage name="email" component='div'></ErrorMessage>
+                        {/* *** Email Input *** */}
+                        <Field id="email" type="email" name="email" placeholder="ejemplo@correo.com" />
+                        {/* Email Errors */}
+                        {
+                                errors.email && touched.email
+                                && (
+                                <ErrorMessage name="email" component="div" />
                                 )
                             }
-                            <br></br>
+                        <br />
 
-                            {/* *** Password Input *** */}
-                            <Field id="password" name="password" placeholder="Ingrese contraseña" type='password' />
-                            {/* Password Errors */}
-                            {
-                                errors.password && touched.password &&
-                                (
-                                    <ErrorMessage name="password" component='div'></ErrorMessage>
+                        {/* *** Password Input *** */}
+                        <Field id="password" name="password" placeholder="Ingrese contraseña" type="password" />
+                        {/* Password Errors */}
+                        {
+                                errors.password && touched.password
+                                && (
+                                <ErrorMessage name="password" component="div" />
                                 )
                             }
-                            <br></br>
+                        <br />
 
-                            {/* *** Confirmation Input *** */}
-                            <Field id="confirm" name="confirm" placeholder="Confirmar contraseña" type='password' />
-                            {/* Confirm Errors */}
-                            {
-                                errors.confirm && touched.confirm &&
-                                (
-                                    <ErrorMessage name="confirm" component='div'></ErrorMessage>
+                        {/* *** Confirmation Input *** */}
+                        <Field id="confirm" name="confirm" placeholder="Confirmar contraseña" type="password" />
+                        {/* Confirm Errors */}
+                        {
+                                errors.confirm && touched.confirm
+                                && (
+                                <ErrorMessage name="confirm" component="div" />
                                 )
                             }
-                            <br></br>
+                        <br />
 
-                            {/* Submit button */}
-                            <button type="submit">Registrarse</button>
-                            {isSubmitting ? (<p>Registrando usuario...</p>) : null}
-                        </Form>
+                        {/* Submit button */}
+                        <button type="submit">Registrarse</button>
+                        {isSubmitting ? (<p>Registrando usuario...</p>) : null}
+                      </Form>
                     )
 
                 }
-            </Formik>
-        </div>
-    )
+        </Formik>
+      </div>
+    );
 }
 
-export default RegisterFormik
+export default RegisterFormik;

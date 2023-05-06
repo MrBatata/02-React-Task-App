@@ -1,13 +1,13 @@
-import React from 'react'
-import RegisterFormik from '../../components/pure/forms/RegisterFormik'
+import React from 'react';
+import RegisterFormik from '../../components/pure/forms/RegisterFormik';
 
-const RegisterPage = () => {
-    return (
-        <div>
-            <h1>Register Page</h1>
-            <RegisterFormik></RegisterFormik>
-        </div>
-    )
+function RegisterPage() {
+  return (
+    <div>
+      <h1>Register Page</h1>
+      <RegisterFormik />
+    </div>
+  );
 }
 
-export default RegisterPage
+export default RegisterPage;

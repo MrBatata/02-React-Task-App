@@ -1,44 +1,49 @@
-import { COMPLETE_SEL_TASK, REMOVE_SEL_TASK } from '../actions/actions'
+import { Task } from '../../models/task.class';
+import { COMPLETE_SEL_TASK, REMOVE_SEL_TASK } from '../actions/actions';
 
 /**
  * * Reducer definition -> tasksReducer
  */
-const tasksReducer = (anyTaskInState, anyAction) => {
+const tasksReducer = (tasksInState, anyAction) => {
   switch (anyAction.type) {
     case REMOVE_SEL_TASK: {
-      const newTaskInState = anyTaskInState.filter((task) => task.id !== anyAction.payload.id)
-      return newTaskInState
+      const newTasksInState = tasksInState.filter((task) => task.id !== anyAction.payload.id);
+      return newTasksInState;
     }
 
     case COMPLETE_SEL_TASK: {
-      const tempTasks = anyTaskInState.map((t) => {
+      const newTasksInState = tasksInState.map((t) => {
         if (t.id === anyAction.payload.id) {
-          return {
-            ...t,
-            isCompleted: !t.isCompleted
-          }
+          // Need this to keep instanceOf Task
+          return new Task(
+            t.id,
+            t.name,
+            t.description,
+            !t.isCompleted,
+            t.level,
+          );
         }
-        return t
-      })
-      return tempTasks
+        return t;
+      });
+      return newTasksInState;
     }
 
-    // TODO: change to `const ADD_TASK: 'ADD_TASK'`
-    // case 'ADD_TASK': {
-    //   return [
-    //     ...anyTaskInState,
-    //     {
-    //       id: anyAction.payload.id,
-    //       name: anyAction.payload.name,
-    //       description: anyAction.payload.description,
-    //       level: anyAction.payload.level
-    //     }
-    //   ]
-    // }
+    case 'ADD_TASK': {
+      return [
+        ...tasksInState,
+        new Task(
+          anyAction.payload.id,
+          anyAction.payload.name,
+          anyAction.payload.description,
+          anyAction.payload.isCompleted,
+          anyAction.payload.level,
+        ),
+      ];
+    }
 
     default:
-      return anyTaskInState
+      return tasksInState;
   }
-}
+};
 
-export default tasksReducer
+export default tasksReducer;
