@@ -2,30 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
-/**
- * * Bootstrap
- */
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-/**
- * * Custom Styles
- * ? Should them be imported in specific child files?
- */
 import './index.css';
 import './styles/task.css';
 import './styles/task-list.css';
 
-/**
- * * App
- */
 import App from './App';
-
-/**
- * * Service Worker
- */
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import Copyright from './components/pure/Copyright';
+
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 /**
  * * DOM render
@@ -33,13 +20,20 @@ import Copyright from './components/pure/Copyright';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <div className="container mt-0 mb-3">
-      <button id="update-button">Buscar e Instalar Update</button>
-      <button id="skip-waiting-button">Activar Update</button>
+    <div className="container-fluid w-50 text-center">
+      <div className='row'>
+        <div className='col-6'>
+          <button id="update-button">Instalar Update</button>
+        </div>
+        <div className='col-6'>
+          <button id="skip-waiting-button">Activar Update</button>
+        </div>
+      </div>
     </div>
+    <hr className='vw-100 m-0 my-1 p-0'></hr>
     <App />
     <Copyright />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change

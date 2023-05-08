@@ -18,6 +18,8 @@ function LoginPage() {
     <div>
       <h1>Login Page</h1>
       <LoginFormik />
+      <button onClick={() => navigateTo('/')}>Home</button>
+
       <Button variant="contained" onClick={() => navigateTo('/register')}>Registrarse</Button>
     </div>
   );
